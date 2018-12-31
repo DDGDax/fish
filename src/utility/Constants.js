@@ -68,13 +68,15 @@ class Constants {
         Beginner: 0,
         Novice: 21,
         Expert: 51,
-        Master: 100
+        Mariner: 101,
+        Master: 141
       },
 
       rankUpgrades: {
         Beginner: 0,
         Novice: 5,
         Expert: 10,
+        Mariner: 30,
         Master: 50
       },
 
