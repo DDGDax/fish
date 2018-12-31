@@ -4,7 +4,7 @@ const Constants = require('../../utility/Constants.js');
 class Location extends patron.Command {
   constructor() {
     super({
-      names: ['location'],
+      names: ['location', 'map', 'goto'],
       groupName: 'general',
       description: 'Go to a location.',
       args: [

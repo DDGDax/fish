@@ -32,11 +32,27 @@
     "location": "Lake"
   },
   {
+    "names": ["yellow walleye"],
+    "type": "fish",
+    "description": "yuh walls have eyes and they're yellow",
+    "acquire_odds": 50,
+    "prestige": 1,
+    "location": "Lake"
+  },
+  {
     "names": ["shrimp"],
     "type": "fish",
     "description": "shrimp is a fucking FAGGOT",
     "acquire_odds": 70,
     "prestige": 0.5,
+    "location": "Ocean"
+  },
+  {
+    "names": ["great white shark", "shark"],
+    "type": "fish",
+    "description": "sharks are scary",
+    "acquire_odds": 1,
+    "prestige": 30,
     "location": "Ocean"
   },
   {
