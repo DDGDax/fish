@@ -16,7 +16,7 @@ class Ranks extends patron.Command {
     for (const key in Constants.config.ranks) {
       reply += '**' + key + ':** ' + Constants.config.ranks[key] + ' Prestige\n';
     }
-    return msg.channel.createMessage(reply, { title: 'Ranks', footer: { text: 'To see ranks abilities use command $ranks2' }});
+    return msg.channel.createMessage(reply, { title: 'Ranks', footer: { text: 'To see ranks abilities use command ?ranks2' }});
   }
 }
 
