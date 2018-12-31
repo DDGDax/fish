@@ -4,6 +4,7 @@ class User {
     this.guildId = guildId;
     this.rank = 'Beginner';
     this.bait = 0;
+    this.prestige = 0;
     this.fish = {};
     this.rods = {};
     this.treasure = {};
