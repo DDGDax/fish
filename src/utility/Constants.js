@@ -85,7 +85,7 @@ class Constants {
       misc: {
         baitPerMessage: 1,
         leaderboardCap: 10,
-        messageCooldown: 60000,
+        messageCooldown: 30000,
         rateLimitMessageCooldown: 5000,
         rateLimitMessageAmount: 8,
         minCharLength: 7,
