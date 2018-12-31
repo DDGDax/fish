@@ -65,9 +65,17 @@ class Constants {
       },
 
       ranks: {
+        Beginner: 0,
         Novice: 21,
         Expert: 51,
         Master: 100
+      },
+
+      rankUpgrades: {
+        Beginner: 0,
+        Novice: 5,
+        Expert: 10,
+        Master: 50
       },
 
       locations: ['Stream', 'Lake', 'Ocean', 'Fishing Store'],

@@ -29,16 +29,35 @@ class Fish extends patron.Command {
       return msg.createErrorReply('there are no fish in this location.');
     }
 
-    const caught = await ItemService.fish(args.item, msg.dbUser, items);
+    const rankItem = await ItemService.rankItem(args.item, msg.dbUser, items);
     let reply = '';
 
-    if (caught) {
-      const gained = 'fish.' + caught.names[0];
-      await msg.client.db.userRepo.updateUser(msg.author.id, msg.guild.id, { $inc: { [gained]: 1 } });
-
-      reply = 'you\'ve successfully caught a fish! You have fished up a ' + ItemService.capitializeWords(caught.names[0]) + '.';
+    if (args.item.names[0] !== 'net') {
+      const caught = await ItemService.fish(rankItem, msg.dbUser, items);
+  
+      if (caught) {
+        const gained = 'fish.' + caught.names[0];
+        await msg.client.db.userRepo.updateUser(msg.author.id, msg.guild.id, { $inc: { [gained]: 1 } });
+  
+        reply = 'you\'ve successfully caught a fish! You have fished up a ' + ItemService.capitializeWords(caught.names[0]) + '.';
+      } else {
+        reply = 'you almost had him! Your fishing line snapped and the fish got away.';
+      }
     } else {
-      reply = 'you almost had him! Your fishing line snapped and the fish got away.';
+      const caught = await ItemService.fish(rankItem, msg.dbUser, items);
+      const caught2 = await ItemService.fish(rankItem, msg.dbUser, items);
+  
+      if (caught && caught2) {
+        const gained = 'fish.' + caught.names[0];
+        const gained2 = 'fish.' + caught.names[0];
+
+        await msg.client.db.userRepo.updateUser(msg.author.id, msg.guild.id, { $inc: { [gained]: 1 } });
+        await msg.client.db.userRepo.updateUser(msg.author.id, msg.guild.id, { $inc: { [gained2]: 1 } });
+  
+        reply = 'you\'ve successfully caught 2 fish! You have fished up a ' + ItemService.capitializeWords(caught.names[0]) + ' and ' + ItemService.capitializeWords(caught2.names[0]) + '.';
+      } else {
+        reply = 'you almost had them! Your fishing net ripped and the fish got away.';
+      }
     }
 
     if (args.item.type === 'rod') {

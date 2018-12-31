@@ -40,6 +40,22 @@
     "location": "Lake"
   },
   {
+    "names": ["largemouth bass"],
+    "type": "fish",
+    "description": "this bass got a large mouth for u black folk",
+    "acquire_odds": 10,
+    "prestige": 3,
+    "location": "Lake"
+  },
+  {
+    "names": ["smallmouth bass"],
+    "type": "fish",
+    "description": "this bass got a small mouth for u white folk",
+    "acquire_odds": 25,
+    "prestige": 2,
+    "location": "Lake"
+  },
+  {
     "names": ["shrimp"],
     "type": "fish",
     "description": "shrimp is a fucking FAGGOT",
@@ -75,5 +91,12 @@
     "description": "Dr. Doofenshmirtz has been cooking up this rod to destroy the people of the Tri-State Area!",
     "accuracy": 90,
     "bait": 100
+  },
+  {
+    "names": ["net"],
+    "type": "rod",
+    "description": "fishnets look good on women",
+    "accuracy": 50,
+    "bait": 200
   }
 ]

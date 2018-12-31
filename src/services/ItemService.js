@@ -20,6 +20,23 @@ class ItemService {
     }
   }
 
+  rankItem(weapon, dbUser) {
+    let newItem = weapon;
+    let newRank = '';
+
+    for (const key in Constants.config.ranks) {
+      if (dbUser.prestige >= Constants.config.ranks[key]) {
+        newRank = key;
+      }
+    }
+
+    newItem.accuracy += Constants.config.rankUpgrades[newRank];
+
+    newItem.accuracy > 100 ? newItem.accuracy = 100 : '';
+
+    return newItem;
+  }
+
   capitializeWords(str) {
     if (isNaN(str)) {
       return str.replace('_', ' ').replace(Constants.data.regexes.capitalize, x => x.charAt(0).toUpperCase() + x.substr(1));

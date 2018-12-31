@@ -3,11 +3,14 @@ const items = require('../data/items.json');
 
 class RankService {
   async handle(msg, dbUser) {
+    let newRank = '';
     for (const key in Constants.config.ranks) {
       if (msg.dbUser.prestige >= Constants.config.ranks[key]) {
-        return msg.client.db.userRepo.updateUser(dbUser.userId, dbUser.guildId, { $set: { 'rank': key }});
+        newRank = key;
       }
     }
+
+    return msg.client.db.userRepo.updateUser(dbUser.userId, dbUser.guildId, { $set: { 'rank': newRank }});
   }
 
   updatePrestige(msg, dbUser) {

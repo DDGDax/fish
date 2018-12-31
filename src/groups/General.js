@@ -4,7 +4,7 @@ class General extends patron.Group {
   constructor() {
     super({
       name: 'general',
-      description: 'These commands aren\'t used with money.'
+      description: 'These commands are for general purpose.'
     });
   }
 }

@@ -27,7 +27,7 @@ class ModifyBait extends patron.Command {
   }
 
   async run(msg, args) {
-    const newDbUser = await msg.client.db.userRepo.modifyCash(msg, args.member, args.amount);
+    const newDbUser = await msg.client.db.userRepo.modifyBait(msg, args.member, args.amount);
 
     return msg.createReply('you have successfully modifed ' + (args.member.id === msg.author.id ? 'your' : args.member.user.tag.boldify() + '\'s') + ' bait to ' + newDbUser.bait + '.');
   }
