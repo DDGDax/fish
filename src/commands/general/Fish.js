@@ -1,6 +1,7 @@
 const patron = require('patron.js');
 const ItemService = require('../../services/ItemService.js');
 const items = require('../../data/items.json');
+const Random = require('../../utility/Random.js');
 
 class Fish extends patron.Command {
   constructor() {
@@ -36,10 +37,22 @@ class Fish extends patron.Command {
       const caught = await ItemService.fish(rankItem, msg.dbUser, items);
   
       if (caught) {
-        const gained = 'fish.' + caught.names[0];
-        await msg.client.db.userRepo.updateUser(msg.author.id, msg.guild.id, { $inc: { [gained]: 1 } });
-  
-        reply = 'you\'ve successfully caught a fish! You have fished up a ' + ItemService.capitializeWords(caught.names[0]) + '.';
+        if (caught.type === 'fish') {
+          const gained = 'fish.' + caught.names[0];
+          await msg.client.db.userRepo.updateUser(msg.author.id, msg.guild.id, { $inc: { [gained]: 1 } });
+    
+          reply = 'you\'ve successfully caught a fish! You have fished up a ' + ItemService.capitializeWords(caught.names[0]) + '.';
+        } else if (caught.type === 'bait') {
+          const baitAmount = Random.nextInt(2, 20);
+          await msg.client.db.userRepo.updateUser(msg.author.id, msg.guild.id, { $inc: { 'bait': baitAmount }});
+
+          reply = 'you\'ve successfully caught bait! You have fished up ' + baitAmount + ' baits';
+        } else {
+          const gained = 'treasure.' + caught.names[0];
+          await msg.client.db.userRepo.updateUser(msg.author.id, msg.guild.id, { $inc: { [gained]: 1 }});
+
+          reply = 'YIKES! YOU CAUGHT SOME TREASURE MY GUY!!! YOU GAINED A ' + caught.names[0].upperString();
+        }
       } else {
         reply = 'you almost had him! Your fishing line snapped and the fish got away.';
       }

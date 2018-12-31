@@ -6,6 +6,7 @@ class User {
     this.bait = 0;
     this.fish = {};
     this.rods = {};
+    this.treasure = {};
     this.location = 'Fishing Store';
   }
 }

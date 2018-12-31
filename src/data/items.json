@@ -64,10 +64,26 @@
     "location": "Ocean"
   },
   {
+    "names": ["stingray"],
+    "type": "fish",
+    "description": "bzz bzz",
+    "acquire_odds": 10,
+    "prestige": 5,
+    "location": "Ocean"
+  },
+  {
+    "names": ["hard clam"],
+    "type": "fish",
+    "description": "clamp",
+    "acquire_odds": 70,
+    "prestige": 0.5,
+    "location": "Ocean"
+  },
+  {
     "names": ["great white shark", "shark"],
     "type": "fish",
     "description": "sharks are scary",
-    "acquire_odds": 1,
+    "acquire_odds": 10,
     "prestige": 30,
     "location": "Ocean"
   },
@@ -98,5 +114,23 @@
     "description": "fishnets look good on women",
     "accuracy": 50,
     "bait": 200
+  },
+  {
+    "names": ["bait"],
+    "type": "bait",
+    "description": "use this to fish with",
+    "acquire_odds": 5
+  },
+  {
+    "names": ["doubloon"],
+    "type": "treasure",
+    "description": "Flexxed so hard for every doubloon the clerks give you a discount.",
+    "acquire_odds": 1
+  },
+  {
+    "names": ["shark tooth"],
+    "type": "treasure",
+    "description": "big tooth.",
+    "acquire_odds": 1
   }
 ]

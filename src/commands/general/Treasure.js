@@ -1,12 +1,12 @@
 const patron = require('patron.js');
 const ItemService = require('../../services/ItemService.js');
 
-class Fishes extends patron.Command {
+class Treasure extends patron.Command {
   constructor() {
     super({
-      names: ['fishes', 'inv'],
+      names: ['treasure', 'display'],
       groupName: 'general',
-      description: 'See your fish.',
+      description: 'See your treasure.',
       args: [
         new patron.Argument({
           name: 'member',
@@ -25,16 +25,16 @@ class Fishes extends patron.Command {
 
     let description = '';
 
-    for (const key in dbUser.fish) {
-      description += dbUser.fish[key] ? ItemService.capitializeWords(key) + ': ' + dbUser.fish[key] + '\n' : '';
+    for (const key in dbUser.treasure) {
+      description += dbUser.treasure[key] ? ItemService.capitializeWords(key) + ': ' + dbUser.treasure[key] + '\n' : '';
     }
 
     if (String.isNullOrWhiteSpace(description)) {
-      return msg.channel.createErrorMessage(args.member.user.tag.boldify() + ' has no fish.');
+      return msg.channel.createErrorMessage(args.member.user.tag.boldify() + ' has no treasure.');
     }
 
-    return msg.channel.createMessage(description, { title: args.member.user.tag + '\'s Fish:' });
+    return msg.channel.createMessage(description, { title: args.member.user.tag + '\'s Treasure:' });
   }
 }
 
-module.exports = new Fishes();
+module.exports = new Treasure();

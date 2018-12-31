@@ -4,14 +4,23 @@ const Constants = require('../utility/Constants.js');
 class ItemService {
   fish(weapon, dbUser, items) {
     const roll = Random.roll();
-    const food = items.filter(x => x.type === 'fish' && x.location.lowerString() === dbUser.location.lowerString()).filter(x => x.acquire_odds).sort((a, b) => a.acquire_odds - b.acquire_odds);
-    const fullFoodOdds = food.map(x => x.acquire_odds).reduce((accumulator, currentValue) => accumulator + currentValue);
-    const rollOdds = Random.nextInt(1, fullFoodOdds);
+    const food = items.filter(x => x.type === 'fish' && x.location.lowerString() === dbUser.location.lowerString()).filter(x => x.acquire_odds);
+    const bait = items.filter(x => x.type === 'bait').filter(x => x.acquire_odds);
+    const treasure = items.filter(x => x.type === 'treasure').filter(x => x.acquire_odds);
+    let allLoot = food;
+
+    if (weapon.names[0].lowerString() !== 'net') {
+      allLoot = food.concat(bait);
+      allLoot = allLoot.concat(treasure);
+    }
+
+    const fullLootOdds = allLoot.map(x => x.acquire_odds).reduce((accumulator, currentValue) => accumulator + currentValue);
+    const rollOdds = Random.nextInt(1, fullLootOdds);
     let cumulative = 0;
 
     if (roll <= weapon.accuracy) {
-      for (let i = 0; i < food.length; i++) {
-        const fish = food[i];
+      for (let i = 0; i < allLoot.length; i++) {
+        const fish = allLoot[i];
         cumulative += fish.acquire_odds;
         if (rollOdds <= cumulative) {
           return fish;

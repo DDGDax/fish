@@ -20,8 +20,10 @@ class RankService {
     for (let i = 0; i < fishKeys.length; i++) {
       const fish = items.find(x => x.type === 'fish' && x.names[0] === fishKeys[i]);
 
-      for (let i = 0; i < dbUser.fish[fish.names[0]]; i++) {
-        prestige += fish.prestige;
+      if (dbUser.fish[fish.names[0]] > 0) {
+        for (let i = 0; i < dbUser.fish[fish.names[0]]; i++) {
+          prestige += fish.prestige;
+        }
       }
     }
 
