@@ -1,4 +1,5 @@
 const patron = require('patron.js');
+const Constants = require('../../utility/Constants.js');
 
 class Ranks extends patron.Command {
   constructor() {
@@ -10,7 +11,12 @@ class Ranks extends patron.Command {
   }
 
   async run(msg) {
-    return msg.channel.createMessage('**Beginner:** 0-20 Prestige\n**Novice:** 21-50 Prestige\n**Expert:** 51-100 Prestige\n**Master:** 100+ Prestige', { title: 'Ranks' });
+    let reply = '';
+
+    for (const key in Constants.config.ranks) {
+      reply += '**' + key + ':** ' + Constants.config.ranks[key] + ' Prestige\n';
+    }
+    return msg.channel.createMessage(reply, { title: 'Ranks' });
   }
 }
 
