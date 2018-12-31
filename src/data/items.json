@@ -1,0 +1,63 @@
+[
+  {
+    "names": ["brown trout"],
+    "type": "fish",
+    "description": "Narly stuff.",
+    "acquire_odds": 30,
+    "prestige": 1,
+    "location": "Stream"
+  },
+  {
+    "names": ["pink salmon"],
+    "type": "fish",
+    "description": "common fish",
+    "acquire_odds": 20,
+    "prestige": 2,
+    "location": "Stream"
+  },
+  {
+    "names": ["flathead catfish"],
+    "type": "fish",
+    "description": "yuh yuh gang",
+    "acquire_odds": 10,
+    "prestige": 5,
+    "location": "Stream"
+  },
+  {
+    "names": ["channel catfish"],
+    "type": "fish",
+    "description": "yuh yuh catfish gang",
+    "acquire_odds": 30,
+    "prestige": 1,
+    "location": "Lake"
+  },
+  {
+    "names": ["shrimp"],
+    "type": "fish",
+    "description": "shrimp is a fucking FAGGOT",
+    "acquire_odds": 70,
+    "prestige": 0.5,
+    "location": "Ocean"
+  },
+  {
+    "names": ["old rod"],
+    "type": "rod",
+    "description": "This rod has been handed down from generation-to-generation.",
+    "accuracy": 20,
+    "bait": 1
+  },
+  {
+    "names": ["basic rod"],
+    "type": "rod",
+    "description": "From Beginner to Master, this rod can get the job done.",
+    "accuracy": 50,
+    "bait": 30
+  },
+  {
+    "names": ["rodinator9000"],
+    "type": "rod",
+    "description": "Dr. Doofenshmirtz has been cooking up this rod to destroy the people of the Tri-State Area!",
+    "accuracy": 90,
+    "bait": 100
+  }
+]
