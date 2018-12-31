@@ -22,6 +22,8 @@ class RankService {
       }
     }
 
+    prestige === undefined ? prestiged = 0 : '';
+
     return msg.client.db.userRepo.updateUser(dbUser.userId, dbUser.guildId, { $set: { 'prestige': prestige }});
   }
 }
