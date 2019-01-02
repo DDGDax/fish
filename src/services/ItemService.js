@@ -2,14 +2,14 @@ const Random = require('../utility/Random.js');
 const Constants = require('../utility/Constants.js');
 
 class ItemService {
-  fish(weapon, dbUser, items) {
+  fish(itemName, accuracy, dbUser, items) {
     const roll = Random.roll();
     const food = items.filter(x => x.type === 'fish' && x.location.lowerString() === dbUser.location.lowerString()).filter(x => x.acquire_odds);
     const bait = items.filter(x => x.type === 'bait').filter(x => x.acquire_odds);
     const treasure = items.filter(x => x.type === 'treasure').filter(x => x.acquire_odds);
     let allLoot = food;
 
-    if (weapon.names[0].lowerString() !== 'net') {
+    if (itemName.lowerString() !== 'net') {
       allLoot = food.concat(bait);
       allLoot = allLoot.concat(treasure);
     }
@@ -18,7 +18,7 @@ class ItemService {
     const rollOdds = Random.nextInt(1, fullLootOdds);
     let cumulative = 0;
 
-    if (roll <= weapon.accuracy) {
+    if (roll <= accuracy) {
       for (let i = 0; i < allLoot.length; i++) {
         const fish = allLoot[i];
         cumulative += fish.acquire_odds;
@@ -29,8 +29,8 @@ class ItemService {
     }
   }
 
-  rankItem(weapon, dbUser) {
-    let newItem = weapon;
+  rankItem(accuracy, dbUser) {
+    let increase = accuracy;
     let newRank = '';
 
     for (const key in Constants.config.ranks) {
@@ -39,11 +39,11 @@ class ItemService {
       }
     }
 
-    newItem.accuracy += Constants.config.rankUpgrades[newRank];
+    increase += Constants.config.rankUpgrades[newRank];
 
-    newItem.accuracy > 100 ? newItem.accuracy = 100 : '';
+    increase > 100 ? increase = 100 : '';
 
-    return newItem;
+    return Math.round(increase);
   }
 
   capitializeWords(str) {

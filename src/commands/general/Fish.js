@@ -30,11 +30,11 @@ class Fish extends patron.Command {
       return msg.createErrorReply('there are no fish in this location.');
     }
 
-    const rankItem = await ItemService.rankItem(args.item, msg.dbUser, items);
+    const accuracy = await ItemService.rankItem(args.item.accuracy, msg.dbUser, items);
     let reply = '';
 
     if (args.item.names[0] !== 'net') {
-      const caught = await ItemService.fish(rankItem, msg.dbUser, items);
+      const caught = await ItemService.fish(args.item.names[0], accuracy, msg.dbUser, items);
   
       if (caught) {
         if (caught.type === 'fish') {
