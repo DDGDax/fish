@@ -13,7 +13,8 @@
     "discord.js": "github:discordjs/discord.js",
     "dotenv": "^6.1.0",
     "mongodb": "^3.1.8",
-    "patron.js": "github:LJNeon/patron.js"
+    "patron.js": "github:LJNeon/patron.js",
+    "prism-media": "^1.0.1"
   },
   "optionalDependencies": {
     "bufferutil": "^4.0.0",
