@@ -22,14 +22,14 @@ client.on('message', async msg => {
   if (!inGuild) {
     msg.dbUser = await client.db.userRepo.getUser(msg.author.id, msg.guild.id);
     msg.dbGuild = await client.db.guildRepo.getGuild(msg.guild.id);
-    
-    if (msg.dbGuild.channels.ignore.includes(msg.channel.id)) {
-      return;
-    }
   }
 
   if (!Constants.data.regexes.prefix.test(msg.content)) {
     return !inGuild && msg.member ? ChatService.applyBait(msg) : null;
+  }
+
+  if (!inGuild && msg.dbGuild.channels.ignore.includes(msg.channel.id)) {
+    return;
   }
 
   await RateLimitService.initiate(msg);
