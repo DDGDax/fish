@@ -57,8 +57,8 @@ class Fish extends patron.Command {
         reply = 'you almost had him! Your fishing line snapped and the fish got away.';
       }
     } else {
-      const caught = await ItemService.fish(rankItem, msg.dbUser, items);
-      const caught2 = await ItemService.fish(rankItem, msg.dbUser, items);
+      const caught = await ItemService.fish(args.item.names[0], accuracy, msg.dbUser, items);
+      const caught2 = await ItemService.fish(args.item.names[0], accuracy, msg.dbUser, items);
   
       if (caught && caught2) {
         const gained = 'fish.' + caught.names[0];
