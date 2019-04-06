@@ -24,6 +24,10 @@ client.on('message', async msg => {
     msg.dbGuild = await client.db.guildRepo.getGuild(msg.guild.id);
   }
 
+  if (msg.dbGuild.channels.ignore.includes(msg.channel.id)) {
+    return;
+  }
+
   if (!Constants.data.regexes.prefix.test(msg.content)) {
     return !inGuild && msg.member ? ChatService.applyBait(msg) : null;
   }
